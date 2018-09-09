@@ -1,0 +1,11 @@
+.alternate-block {
+  margin-bottom: 1em;
+}
+
+table {
+  & tr {
+    & td:first-of-type {
+      font-weight: bold;
+    }
+  }
+}

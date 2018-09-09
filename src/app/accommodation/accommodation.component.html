@@ -1,0 +1,164 @@
+<div fxLayout="row wrap" fxFlex="100">
+  <h1 fxFlex="100">What we have to offer</h1>
+
+  <mat-card fxFlex="100" fxLayout="row wrap">
+    <mat-card-title>Flat 1. 24, Trinity Road, Bridlington, YO15 2EY</mat-card-title>
+    <mat-card-content>
+      <p>Pride-N-Joy is located just ten minutes casual walk from the sea front and a maximum walk of fifteen minutes
+        from the main shopping area, which contains a main Post Office, GP's Surgeries, many of the major Banks and
+        shops such as the Co-operative, Iceland, and many more.</p>
+
+      <p>This four room apartment obtained a 3 Star from <a href="http://www.visitengland.com/">VisitEngland</a> and a
+        National Accessibility Scheme (NAS) Mobility
+        rating of M3A Assisted wheelchair user, making it the highest in Bridlington. The four areas are described in
+        more detail below with pictures where possible to show quality of the conversion and modification
+        undertaken.</p>
+
+      <p>On arrival your party will be offered a courtesy mug of tea or coffee and assistance with your luggage.</p>
+
+      <p>A bed can be fitted with under mattress fire alarms for guests with hearing impairments. There are a range of
+        facilities for hire: Internet Access, Towels, Toilet Seat Extension (2", 4" and 6"), Intercom and Mobility
+        Scooters and Male/Female Urine Bottles (For Sale Only). Children welcome from any age.</p>
+    </mat-card-content>
+
+
+    <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start" style="padding: 0.5em 0 1em 0;">
+      <img class="accommodation-feature-icon"
+           src="https://pride-n-joy.co.uk/images/icons/washingMachine.jpg" title="Washing Machine"
+           alt="Washing Machine" matTooltip="Washing Machine" matTooltipPosition="above"/>
+      <img class="accommodation-feature-icon"
+           src="https://pride-n-joy.co.uk/images/icons/dishwasher.png"
+           title="DishWasher" alt="DishWasher" matTooltip="DishWasher" matTooltipPosition="above"/>
+      <img class="accommodation-feature-icon"
+           src="https://pride-n-joy.co.uk/images/icons/iron.png" title="Iron"
+           alt="Iron" matTooltip="Iron" matTooltipPosition="above"/>
+      <img class="accommodation-feature-icon"
+           src="https://pride-n-joy.co.uk/images/icons/linen.png"
+           title="Linen Provided" alt="Linen Provided" matTooltip="Linen Provided" matTooltipPosition="above"/>
+      <img class="accommodation-feature-icon"
+           src="https://pride-n-joy.co.uk/images/icons/parking.jpg"
+           title="Parking Available" alt="Parking Available" matTooltip="Parking Available" matTooltipPosition="above"/>
+      <img class="accommodation-feature-icon"
+           src="https://pride-n-joy.co.uk/images/icons/internetAccess.jpg"
+           title="Internet Access" alt="Internet Access" matTooltip="Internet Access" matTooltipPosition="above"/>
+      <img class="accommodation-feature-icon"
+           src="https://pride-n-joy.co.uk/images/icons/phone.png"
+           title="Public Phone" alt="Public Phone" matTooltip="Public Phone" matTooltipPosition="above"/>
+      <img class="accommodation-feature-icon"
+           src="https://pride-n-joy.co.uk/images/icons/garden.png" title="Garden"
+           alt="Garden" matTooltip="Garden" matTooltipPosition="above"/>
+    </div>
+
+    <mat-tab-group [dynamicHeight]="true" [backgroundColor]="'accent'">
+      <mat-tab label="Parking Area">
+        <p>The apartment has a dedicated disabled parking area, shown in the picture below this text. This means at
+          you are only 5 to 15 meters away from the entrances of the building. When entering through the communal
+          front door you will need to go up two steps, which is only 5 metres from your transport.</p>
+
+        <p>Alternatively, go through the garden gate and up the gentle ramp in through your own personal door, into
+          the Kitchen of the apartment.</p>
+
+        <img *ngFor="let image of imageList.parking" [src]="image.image" class="accommodation-image"/>
+      </mat-tab>
+
+      <mat-tab label="Living Room">
+        <p>The Living Room is large and spacious (approx 3.8 meters by 3.9 meters), contains the latest design in a
+          double bed settee, which is fully sprung to ensure that you have a comfortable night's sleep.
+        </p>
+
+        <p>In addition, a 40" LCD HD, flat screen TV, which stands in the corner of the room with in built free view.
+          The Television also has an USB port, so you can bring your own media files on a USB External Hard Drive and
+          watch them. Giving you full entertainment for the occasional nights in.
+        </p>
+
+        <p>For those of you wishing to surf, without having to put on your wetsuit. We have provided you with a
+          Desktop Computer (free to use), but with a little extra cost, you can have unlimited Broadband of up to
+          20mbps. Click on the "Internet Access" on the booking form. We have placed the £1.00 electric coin meter at
+          the side of the computer for ease of access.
+        </p>
+
+        <img *ngFor="let image of imageList.living" [src]="image.image" class="accommodation-image"/>
+      </mat-tab>
+
+      <mat-tab label="Hallway">
+        <p>The hall way leads you passed the Bed Room and down a gentle slope of 1/5, into the Dining Area. This ensures
+          that it does not matter if you are sleeping in the living room or bed room, you are not disturbed by other
+          members of your party, if they wish to use the other facilities.
+        </p>
+
+        <img *ngFor="let image of imageList.hallway" [src]="image.image" class="accommodation-image"/>
+      </mat-tab>
+
+      <mat-tab label="Bed Room">
+        <p>The bed room (3.2 meters by 3.9 meters) contains a 5ft double electric bed that each occupant can control
+          (Select your requirements on the booking form).
+        </p>
+
+        <p>When two single beds are requested they are 2ft 6" wide and with the touch of a button can sit you up, lift
+          your legs, or lay you down flat. Ensuring that no matter what position you wish to sleep in, you are going to
+          get a rest full night's sleep and wake up feeling refreshed. In addition, we have installed an under mattress
+          fire alarm for the deaf (Just request it's installation on visiting us).
+        </p>
+
+        <p>The room is decorated with excellent imitation stained wooden floor (vinyl for easy to clean), vibrantly
+          painted walls and one wardrobe, with a mirror.
+        </p>
+
+        <img *ngFor="let image of imageList.bedroom" [src]="image.image" class="accommodation-image"/>
+      </mat-tab>
+
+      <mat-tab label="Dining / Kitchen">
+        <p>The dining and kitchen area are open plan providing a room of (3.6 meters by 5.6 meters). However, the dining
+          area is approximately half the length of the room and one side contains an oak butterfly dining table (height
+          75cm) and four chairs.
+        </p>
+
+        <p>In the alcove opposite are fitted cupboards each with a digital padlock. Behind each of these doors are
+          additional items you may request. For example, you may find that after a day spent on Bridlington's golden
+          beach, your towels require changing. Therefore, you can contact us using the Skype Telephone (with no cost)
+          and thus request an additional bundle of towels and for a small additional fee, we can give you access by
+          telling you, which cupboard door the towels are behind and its padlock number.
+        </p>
+
+        <p>The kitchen area, with its full size electric cooker and gas hob, this fully fitted kitchen comes equipped
+          with virtually everything you could require to make meals during your stay. We have even had the good sense to
+          fit it with a dish washer removing the need for you to spend time at the sink, when you could be out enjoying
+          yourselves.
+        </p>
+
+        <p>Alternatively, you can always bring in a late night snack from the take away, or simply eat out; the choice
+          of course, is completely yours.
+        </p>
+
+        <img *ngFor="let image of imageList.dining" [src]="image.image" class="accommodation-image"/>
+      </mat-tab>
+
+      <mat-tab label="Wet Room">
+        <p>For most individuals, particularly those with restricted mobility, such as the disabled and elderly, this
+          area is of paramount importance. Therefore, you will be pleased to view and read about the fitments, which are
+          comprehensive. A drop down shower chair is installed and full length mirrors have been strategically placed
+          enabling you to view parts of your body you may need to place particular importance on keeping clean. Or just
+          enabling you to make sure, that you look stunning for your nights out.
+        </p>
+
+        <p>The wet room is fitted with a wall mounted shower, and additional holders for the shower head are installed.
+          So it does not matter whether you are closer to three feet tall, or six the shower head can be mounted for
+          you. Although the toilet was fitted at a standard height, you can hire different toilet seat extensions from
+          us, just select the required height on the Booking Form.
+        </p>
+
+        <img *ngFor="let image of imageList.bathroom" [src]="image.image" class="accommodation-image"/>
+      </mat-tab>
+
+      <mat-tab label="Garden">
+        <p>In addition to the Mobility Scooter sheds, we have had a wooden gazebo constructed with seating and tables
+          therefore, giving you the opportunity to eat outside if you wish.
+        </p>
+
+        <img *ngFor="let image of imageList.garden" [src]="image.image" class="accommodation-image"/>
+      </mat-tab>
+
+    </mat-tab-group>
+  </mat-card>
+
+</div>

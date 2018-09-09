@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'palette';
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700&subset=cyrillic');
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  color: $primary-text-color;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.1em;
+  line-height: 1.8em;
+}
+
+h1 {
+  text-align: center;
+}
+
+.trunc {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+a {
+  color: $accent-color;
+
+  &:active,
+  &:focus,
+  &:visited {
+    color: $accent-color;
+  }
+}

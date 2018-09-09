@@ -23,7 +23,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/theme.scss",
+              "src/palette.scss",
+              "src/styles.scss",
+              "node_modules/font-awesome/scss/font-awesome.scss"
             ],
             "scripts": []
           },
@@ -123,5 +126,10 @@
       }
     }
   },
-  "defaultProject": "pridenjoy"
+  "defaultProject": "pridenjoy",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

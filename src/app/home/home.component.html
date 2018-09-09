@@ -1,0 +1,16 @@
+<div fxLayout="row wrap" fxFlex="100">
+  <h1 fxFlex="100">Welcome</h1>
+
+  <mat-card fxFlex="100">
+    <img src="http://pride-n-joy.co.uk/images/drive.jpg"/>
+    <p>Pride-N-Joy is a ground floor "3 Star" rated, self-catering holiday apartment, located at the east coastal resort of Bridlington.</p>
+    <p>We are just minutes walk from the sea front with its award winning beach, Super Market and the shopping area with the main utilities, such as Chemist, Banks, Post Office and GP Surgeries.</p>
+    <p>Although we are very disabled friendly, we are NOT exclusive. We welcome all of our guests with a courtesy warm drink of tea or coffee on their arrival and maintain that warm welcome with free central heating throughout the year.</p>
+    <p>This self-contained establishment was modified to be wheelchair friendly in 2011, giving excellent access to those with physical limitations such as the disabled and elderly. (Take A Tour) The establishment is a credited with a "National Accessible Scheme" (NAS) rate/level "Mobility" M3A - Assisted wheelchair users, the highest in Bridlington.</p>
+    <p>The apartment sleeps 1-4 people, which can be configured as two double beds, one of which is an electric 5ft bed that can be controled by each individual. The bathing and toilet area are constructed as a wet room, with shower for ease of use. In addition, the wet room gives full wheelchair access and is fitted with the full complement of grab rails and drop down seating for those that need them. Additional aids can be loaned or hired, like Mobility Scooter/s, Invacare Birdie Hoist (Max Load 170kg), Toilet Seat Extension/s and a Under Matress Fire alarm for the Deaf etc...</p>
+  </mat-card>
+
+  <mat-card style="margin-top: 1em;" fxFlex="100">
+    <ng-image-slider *ngIf="imageList.length > 0" [images]="imageList" [infinite]="true"></ng-image-slider>
+  </mat-card>
+</div>

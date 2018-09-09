@@ -1,0 +1,110 @@
+<div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center center">
+  <h1 fxFlex="100">Get in touch</h1>
+
+  <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+    <div fxFlex="50">
+      <p>Please feel free to contact us using any of the methods shown below:</p>
+      <p>
+        <mat-icon class="fa fa-globe"></mat-icon>
+        24, Trinity Road, Bridlington, East Yorkshire. YO15 2EY
+      </p>
+      <p>
+        <mat-icon class="fa fa-phone"></mat-icon>
+        +44 (0)1143 6 01145
+      </p>
+      <p>
+        <mat-icon class="fa fa-skype"></mat-icon>
+        pride-n-joy
+      </p>
+      <p>
+        <mat-icon class="fa fa-envelope"></mat-icon>
+        admin@pride-n-joy.co.uk
+      </p>
+    </div>
+
+    <div fxFlex="50" fxLayout="row" fxLayoutAlign="space-around center">
+      <a href="https://www.facebook.com/pridenjoybridlington">
+        <mat-icon class="fa fa-4x fa-facebook-f"></mat-icon>
+      </a>
+      <a href="https://plus.google.com/u/0/106568762021791918269">
+        <mat-icon class="fa fa-4x fa-google-plus"></mat-icon>
+      </a>
+      <a href="https://twitter.com/Pride_N_Joy_UK">
+        <mat-icon class="fa fa-4x fa-twitter"></mat-icon>
+      </a>
+    </div>
+
+    <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start">
+
+      <div fxFlex="45" fxLayout="row wrap">
+        <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+          <mat-label>Name</mat-label>
+          <input matInput [formControl]="name" required/>
+          <mat-icon matSuffix class="fa fa-user"></mat-icon>
+          <mat-hint>Full name</mat-hint>
+
+          <mat-error *ngIf="name.invalid">{{getErrorMessage('name')}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+          <mat-label>E-mail address</mat-label>
+          <input matInput [formControl]="email" required/>
+          <mat-icon matSuffix class="fa fa-envelope"></mat-icon>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage('email')}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+          <mat-label>Telephone</mat-label>
+          <input matInput [formControl]="phone"/>
+          <mat-icon matSuffix class="fa fa-phone"></mat-icon>
+          <mat-hint>Mobile or landline</mat-hint>
+          <mat-error *ngIf="phone.invalid">{{getErrorMessage('phone')}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="45" fxLayout="row wrap">
+        <mat-form-field fxFlex="100" [color]="'accent'">
+          <mat-select placeholder="Contact method">
+            <mat-option value="email">E-mail</mat-option>
+            <mat-option value="snailmail">Snail mail</mat-option>
+            <mat-option value="telephone">Telephone</mat-option>
+          </mat-select>
+          <mat-hint>Preferred method of contact</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field fxFlex="100" [color]="'accent'">
+          <textarea matInput placeholder="Message" rows="4"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="100" style="padding-top: 1em;">
+        <button mat-raised-button color="accent">Send</button>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center" style="margin-top: 1em;">
+    <mat-card-title fxFlex="100">Google Maps Directions</mat-card-title>
+    <mat-card-content fxFlex="100" fxLayout="row wrap">
+      <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'" fxFlex="100">
+        <mat-label>Post code</mat-label>
+        <input matInput/>
+        <mat-icon matSuffix class="fa fa-user"></mat-icon>
+        <mat-hint>Enter your post code or address</mat-hint>
+      </mat-form-field>
+
+      <agm-map [latitude]="map.center.latitude" [longitude]="map.center.longitude" [zoom]="map.zoom"
+               [styles]="['Satellite']"
+               [mapTypeControl]="true" [scaleControl]="false" [scrollwheel]="false"
+               style="height: 250px; width: 100%; position: relative; padding: 1em 0;">
+        <agm-marker [latitude]="map.center.latitude" [longitude]="map.center.longitude">
+        </agm-marker>
+      </agm-map>
+
+      <div fxLayout="row wrap" fxLayoutGap="10px">
+        <button mat-raised-button color="accent">Hide Markers</button>
+        <button mat-raised-button color="accent">Get Directions</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

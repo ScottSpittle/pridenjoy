@@ -1,0 +1,31 @@
+@import '../../palette';
+
+.mat-tab-header {
+  background-color: $accent-color !important;
+}
+
+.mat-tab-label {
+  color: #FFF !important;
+  opacity: 1 !important;
+}
+
+.accommodation-image {
+  display: inline-block;
+  width: 205px;
+  height: 200px;
+  margin: 0 5px;
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.accommodation-feature-icon {
+  width: 100px;
+  height: 100px;
+  padding: 0 5px;
+}

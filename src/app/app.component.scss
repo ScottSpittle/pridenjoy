@@ -1,0 +1,17 @@
+@import '../palette';
+
+.app-event-item {
+  & mat-icon {
+    color: $accent-color;
+  }
+
+  & a {
+    color: $accent-color;
+
+    &:visited,
+    &:focus,
+    &:active {
+      color: $accent-color;
+    }
+  }
+}
