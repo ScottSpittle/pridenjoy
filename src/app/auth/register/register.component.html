@@ -1,0 +1,109 @@
+<div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center center">
+  <h1 fxFlex="100">Registration</h1>
+
+  <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start">
+
+    <div fxFlex="45" fxLayout="row wrap" fxLayoutAlign="start center">
+      <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+        <mat-label>Username</mat-label>
+        <input matInput [formControl]="username" required/>
+        <mat-icon matSuffix class="fa fa-user"></mat-icon>
+        <mat-hint>Please do NOT use your email address</mat-hint>
+
+        <mat-error *ngIf="username.invalid">{{getErrorMessage('username')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+        <mat-label>E-mail</mat-label>
+        <input matInput [formControl]="email" required type="email"/>
+        <mat-icon matSuffix class="fa fa-envelope"></mat-icon>
+        <mat-hint>Email address</mat-hint>
+
+        <mat-error *ngIf="email.invalid">{{getErrorMessage('email')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+        <mat-label>Password</mat-label>
+        <input matInput [formControl]="password" required type="password"/>
+        <mat-icon matSuffix class="fa fa-lock"></mat-icon>
+
+        <mat-error *ngIf="password.invalid">{{getErrorMessage('password')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+        <mat-label>Confirmation</mat-label>
+        <input matInput [formControl]="password_confirm" required/>
+        <mat-icon matSuffix class="fa fa-lock"></mat-icon>
+        <mat-hint>Please type your password again to confirm it's correct</mat-hint>
+
+        <mat-error *ngIf="password_confirm.invalid">{{getErrorMessage('password_confirm')}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="45" fxLayout="row wrap" fxLayoutAlign="start center">
+      <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+        <mat-label>First name</mat-label>
+        <input matInput [formControl]="firstname" required/>
+        <mat-icon matSuffix class="fa fa-clipboard"></mat-icon>
+
+        <mat-error *ngIf="firstname.invalid">{{getErrorMessage('firstname')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+        <mat-label>Last name</mat-label>
+        <input matInput [formControl]="lastname" required/>
+        <mat-icon matSuffix class="fa fa-clipboard"></mat-icon>
+
+        <mat-error *ngIf="lastname.invalid">{{getErrorMessage('lastname')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+        <mat-label>Home phone</mat-label>
+        <input matInput [formControl]="homephone" required/>
+        <mat-icon matSuffix class="fa fa-phone"></mat-icon>
+
+        <mat-error *ngIf="homephone.invalid">{{getErrorMessage('homephone')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+        <mat-label>Mobile phone</mat-label>
+        <input matInput [formControl]="mobilephone" required/>
+        <mat-icon matSuffix class="fa fa-mobile-phone"></mat-icon>
+
+        <mat-error *ngIf="mobilephone.invalid">{{getErrorMessage('mobilephone')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+        <mat-label>Address</mat-label>
+        <textarea matInput placeholder="89 Barbie Road,
+Tesla Lane,
+Sheffield,
+S1 ABC" rows="4"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="100" fxLayout="column" style="padding: 1em 0;">
+      <mat-checkbox>I'm Happy to receive Christmas cards</mat-checkbox>
+      <mat-checkbox>I'm happy to receive promotional material</mat-checkbox>
+    </div>
+
+    <div fxFlex="100" fxLayout="row" style="padding: 1em 0;">
+      <button mat-raised-button color="accent">Register</button>
+    </div>
+
+  </mat-card>
+
+  <mat-divider [inset]="true"></mat-divider>
+
+  <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+    <mat-card-title>Terms and Conditions</mat-card-title>
+    <mat-card-content>
+      <p>The information you have provided above is covered by the "Data Protection Act" and will only be used by
+        'Pride-N-Joy', to assist us in assisting you to benefit from the services we provide.</p>
+
+      <p>The information will NOT be disseminated to any other individual/s or organisations without you being informed
+        and being given the option, to have your information removed.
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
     { title: 'Recommendations', route: 'recommendation' },
     { title: 'Help', route: 'help' },
     { title: 'Contact Us', route: 'contact' },
-    { title: 'Login', route: 'login', icon: 'fa-user' },
+    { title: 'Login', route: 'auth/login', icon: 'fa-user' },
   ];
 
   constructor() { }

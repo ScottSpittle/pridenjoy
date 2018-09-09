@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: './contact/contact.module#ContactModule'
   },
   {
+    path: 'auth',
+    loadChildren: './auth/auth.module#AuthModule'
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'

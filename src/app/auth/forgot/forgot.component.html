@@ -1,0 +1,25 @@
+<div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center center">
+  <h1 fxFlex="100">Password Reset</h1>
+
+  <mat-card fxFlex="50" fxLayout="row wrap" fxLayoutAlign="center start">
+    <mat-toolbar fxFlex="100" color="accent">
+      <mat-toolbar-row>
+        <h4>Password reset request form</h4>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div fxFlex="80" fxLayout="row wrap" fxLayoutAlign="center center" style="padding-top: 1em;">
+      <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+        <mat-label>Email address</mat-label>
+        <input matInput required type="email"/>
+        <mat-icon matSuffix class="fa fa-user"></mat-icon>
+      </mat-form-field>
+
+      <div fxFlex="100" fxLayout="start center">
+        <button mat-raised-button color="accent">Submit</button>
+      </div>
+    </div>
+
+  </mat-card>
+
+</div>

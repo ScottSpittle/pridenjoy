@@ -1,0 +1,39 @@
+<div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center center">
+  <h1 fxFlex="100">Login</h1>
+
+  <mat-card fxFlex="50" fxLayout="row wrap" fxLayoutAlign="center start">
+      <mat-toolbar fxFlex="100" color="accent">
+        <mat-toolbar-row>
+          <h4>Login form</h4>
+        </mat-toolbar-row>
+      </mat-toolbar>
+
+    <div fxFlex="80" fxLayout="row wrap" fxLayoutAlign="center center" style="padding-top: 1em;">
+      <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+        <mat-label>Email address</mat-label>
+        <input matInput required type="email"/>
+        <mat-icon matSuffix class="fa fa-user"></mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+        <mat-label>Password</mat-label>
+        <input matInput required type="password"/>
+        <mat-icon matSuffix class="fa fa-lock"></mat-icon>
+      </mat-form-field>
+
+      <div fxFlex="100" fxLayout="start center">
+        <span fxFlex="100">
+          <a [routerLink]="['/auth', 'passwordReset']">Forgot your password?</a>
+        </span>
+
+        <p fxFlex="100">
+          Don't have an account? <a [routerLink]="['/auth', 'register']">Sign up now!</a>
+        </p>
+
+        <button mat-raised-button color="accent">Login</button>
+      </div>
+    </div>
+
+  </mat-card>
+
+</div>
