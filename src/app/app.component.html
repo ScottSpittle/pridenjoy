@@ -1,10 +1,11 @@
 <div fxLayout="row wrap" fxLayoutAlign="center start" fxFlex="100">
+  <simple-notifications></simple-notifications>
 
   <app-header fxFlex="100"></app-header>
 
   <div fxFlex="80" fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="10px">
 
-    <div fxFlex="20" fxLayout="row wrap">
+    <div fxFlex="20" fxLayout="row wrap" *ngIf="showEvents">
       <h1 fxFlex="100"> Events </h1>
 
       <div fxFlex="100" fxLayout="row wrap">
@@ -33,7 +34,7 @@
       </div>
     </div>
 
-    <div fxFlex="80">
+    <div [fxFlex]="showEvents ? 80 : 100">
       <router-outlet></router-outlet>
     </div>
 

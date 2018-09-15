@@ -1,0 +1,37 @@
+<div fxFlex="100" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
+
+  <div fxFlex="20" fxLayout="row wrap" fxLayoutAlign="center center">
+    <div fxFlex="100" fxLayout="row">
+      <mat-list fxFlex="100" class="navigation-list">
+        <h3 mat-subheader>Personal details</h3>
+
+        <mat-list-item mat-ripple *ngFor="let navItem of navList"
+                       [class.active]="navItem.active"
+                       [routerLink]="[ '/account', navItem.route]">
+          <mat-icon mat-list-icon [ngClass]="['fa', navItem.icon]"></mat-icon>
+          <h4 mat-line>{{navItem.title}}</h4>
+          <mat-icon [ngClass]="['fa', 'fa-chevron-right']" *ngIf="!navItem.active"></mat-icon>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <h3 mat-subheader class="fa">Bookings</h3>
+
+        <mat-list-item mat-ripple *ngFor="let navItem of subNavList"
+                       [class.active]="navItem.active"
+                       [routerLink]="['/account', 'bookings', navItem.route]">
+          <mat-icon mat-list-icon [ngClass]="['fa', navItem.icon]"></mat-icon>
+          <h4 mat-line>{{navItem.title}}</h4>
+          <mat-icon [ngClass]="['fa', 'fa-chevron-right']" *ngIf="!navItem.active"></mat-icon>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+
+  <div fxFlex="80" fxLayout="row wrap" fxLayoutAlign="center center">
+    <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center" style="padding-top: 2.5em;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

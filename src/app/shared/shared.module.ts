@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatCardModule, MatIconModule, MatListModule, MatRippleModule, MatToolbarModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
+import { ErrorListComponent } from './error-list/error-list.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import {RouterModule} from '@angular/router';
     MatCardModule,
     MatListModule
   ],
-  declarations: [HeaderComponent, FooterComponent],
-  exports: [HeaderComponent, FooterComponent]
+  declarations: [HeaderComponent, FooterComponent, ErrorListComponent],
+  exports: [HeaderComponent, FooterComponent, ErrorListComponent]
 })
 export class SharedModule { }

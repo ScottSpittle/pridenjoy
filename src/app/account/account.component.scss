@@ -1,0 +1,24 @@
+@import '../../palette';
+
+.navigation-list {
+  & mat-list {
+    position: relative;
+  }
+
+  & mat-list-item {
+    position: relative;
+    cursor: pointer;
+
+    &.active,
+    &:hover {
+      background-color: $accent-color;
+      color: #ffffff;
+    }
+
+    & mat-icon {
+      &:last-of-type {
+        padding-top: 10px;
+      }
+    }
+  }
+}

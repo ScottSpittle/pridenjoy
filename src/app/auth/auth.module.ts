@@ -15,6 +15,7 @@ import {
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatDividerModule,
     MatButtonModule,
     MatInputModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    SharedModule
   ],
   declarations: [LoginComponent, RegisterComponent, ForgotComponent]
 })

@@ -42,6 +42,14 @@
         transition: all 0.3s ease-in-out 0s;
       }
 
+      &.active {
+        background-color: $accent-color;
+
+        & .nav-title {
+          color: #ffffff;
+        }
+      }
+
       &:hover:before {
         visibility: visible;
         -webkit-transform: scaleX(1);

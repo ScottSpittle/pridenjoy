@@ -12,10 +12,13 @@
              [routerLink]="[item.route]"
              fxFlex="0 1 auto"
              class="nav-item"
+             [class.active]="item.active"
              fxLayout="row"
              fxLayoutAlign="center center">
-          <mat-icon [ngClass]="['fa', item.icon]" *ngIf="item.icon"></mat-icon>
-          <span class="nav-title" [innerHtml]="item.title" fxFlex="0 1 auto"></span>
+          <span class="nav-title" fxFlex="0 1 auto">
+            <mat-icon [ngClass]="['fa', item.icon]" *ngIf="item.icon"></mat-icon>
+            {{item.title}}
+          </span>
         </div>
       </div>
     </mat-toolbar-row>
