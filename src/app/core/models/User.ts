@@ -3,8 +3,7 @@ export class User {
   private _last: string;
   private _id: number;
   private _email: string;
-  private _created_at: string;
-  private _updated_at: string;
+  private _join_date: string;
   private _mobile: number;
   private _home: number;
   private _username: string;
@@ -13,18 +12,17 @@ export class User {
   private _holiday_perm: string;
 
   constructor(private data: any) {
-    this._first = data.first;
-    this._last = data.last;
+    this._first = data.firstName;
+    this._last = data.lastName;
     this._id = data.id;
     this._email = data.email;
-    this._created_at = data.created_at;
-    this._updated_at = data.updated_at;
-    this._mobile = data.mobile;
-    this._home = data.home;
+    this._join_date = data.joinDate;
+    this._mobile = data.telMobile;
+    this._home = data.telHome;
     this._username = data.username;
     this._address = data.address;
-    this._promotion_perm = data.promotion_perm;
-    this._holiday_perm = data.holiday_perm;
+    this._promotion_perm = data.promoMaterial;
+    this._holiday_perm = data.xmasCardOK;
 
     delete this.data;
   }
@@ -77,12 +75,8 @@ export class User {
     this._mobile = value;
   }
 
-  get updated_at(): string {
-    return this._updated_at;
-  }
-
-  get created_at(): string {
-    return this._created_at;
+  get joinDate(): string {
+    return this._join_date;
   }
 
   get email(): string {
