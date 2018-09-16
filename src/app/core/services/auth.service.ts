@@ -14,10 +14,21 @@ export class AuthService extends BaseService {
   public loginEvent: BehaviorSubject<User> = new BehaviorSubject(null);
   public logoutEvent: BehaviorSubject<null> = new BehaviorSubject(null);
 
-  public _loggedInUser: User;
+  private _loggedInUser: User;
 
   constructor(private http: HttpClient) {
     super();
+
+    const token = localStorage.getItem('token');
+
+    if(!isNullOrUndefined(token)) {
+      this.http.get(environment.urls.api + '/user')
+        .subscribe((r) => {
+          const user = new User(r);
+
+          this.setLoggedInState(user);
+        });
+    }
   }
 
   public get isLoggedIn(): Observable<boolean> {
@@ -40,6 +51,19 @@ export class AuthService extends BaseService {
 
   public get loggedInUser(): User {
     return this._loggedInUser;
+  }
+
+  public set loggedInUser(value: User) {
+    this._loggedInUser = value;
+  }
+
+  public logout() {
+    this.http.delete(environment.urls.api + '/auth')
+      .subscribe(() => {
+        this.logoutEvent.next(null);
+
+        localStorage.removeItem('token');
+      });
   }
 
   public register(userData: any): Observable<any> {

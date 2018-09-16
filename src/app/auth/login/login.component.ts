@@ -3,6 +3,7 @@ import {AuthService} from '../../core/services/auth.service';
 import {User} from '../../core/models/User';
 import {HttpError} from '../../core/models/HttpError';
 import {Router} from '@angular/router';
+import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,9 @@ export class LoginComponent {
 
   constructor(private _authService: AuthService,
               private router: Router) {
-
+    if(!isNullOrUndefined(this._authService.loggedInUser)) {
+      this._authService.logout();
+    }
   }
 
   public login() {

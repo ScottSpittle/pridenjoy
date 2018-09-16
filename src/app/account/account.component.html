@@ -24,6 +24,15 @@
           <h4 mat-line>{{navItem.title}}</h4>
           <mat-icon [ngClass]="['fa', 'fa-chevron-right']" *ngIf="!navItem.active"></mat-icon>
         </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item mat-ripple
+                       [routerLink]="['/auth', 'logout']">
+          <mat-icon mat-list-icon class="fa fa-sign-out"></mat-icon>
+          <h4 mat-line>Logout</h4>
+        </mat-list-item>
+
       </mat-list>
     </div>
   </div>

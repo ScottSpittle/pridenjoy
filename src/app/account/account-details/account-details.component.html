@@ -1,23 +1,193 @@
 <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
 
   <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
-    <mat-card-title>Personal information</mat-card-title>
+    <mat-card-title>Personal settings</mat-card-title>
+
+    <form fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start"
+          [formGroup]="personalForm"
+          (ngSubmit)="updateDetails()">
+
+      <div fxFlex="45" fxLayout="row wrap">
+        <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+          <mat-label>Username</mat-label>
+          <input matInput [formControlName]="'username'"/>
+          <mat-icon matSuffix class="fa fa-user"></mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+          <mat-label>First name</mat-label>
+          <input matInput [formControlName]="'firstname'"/>
+          <mat-icon matSuffix class="fa fa-clipboard"></mat-icon>
+
+          <mat-error *ngIf="personalForm.get('firstname').invalid">{{getErrorMessage('firstname')}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+          <mat-label>Last name</mat-label>
+          <input matInput [formControlName]="'lastname'"/>
+          <mat-icon matSuffix class="fa fa-clipboard"></mat-icon>
+
+          <mat-error *ngIf="personalForm.get('lastname').invalid">{{getErrorMessage('lastname')}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="45" fxLayout="row wrap">
+        <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+          <mat-label>Home phone</mat-label>
+          <input matInput [formControlName]="'homephone'"/>
+          <mat-icon matSuffix class="fa fa-phone"></mat-icon>
+
+          <mat-error *ngIf="personalForm.get('homephone').invalid">{{getErrorMessage('homephone')}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+          <mat-label>Mobile phone</mat-label>
+          <input matInput [formControlName]="'mobilephone'"/>
+          <mat-icon matSuffix class="fa fa-mobile-phone"></mat-icon>
+
+          <mat-error *ngIf="personalForm.get('mobilephone').invalid">{{getErrorMessage('mobilephone')}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
+          <mat-label>Address</mat-label>
+          <textarea [formControlName]="'address'" matInput placeholder="89 Barbie Road,
+Tesla Lane,
+Sheffield,
+S1 ABC" rows="4"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="100" fxLayout="row" style="padding: 1em 0;" *ngIf="errors.personalForm">
+        <app-error-list [httpError]="errors.personalForm">
+
+        </app-error-list>
+      </div>
+
+      <div fxFlex="100" fxLayout="row" style="padding: 1em 0;">
+        <button mat-raised-button color="accent" [type]="'submit'">Save</button>
+      </div>
+    </form>
   </mat-card>
 
   <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
     <mat-card-title>Email settings</mat-card-title>
+    <form fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start"
+          [formGroup]="emailForm"
+          (ngSubmit)="updateEmail()">
+
+      <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <mat-form-field appearance="legacy" fxFlex="45" [color]="'accent'">
+          <mat-label>E-mail</mat-label>
+          <input matInput [formControlName]="'email'" type="email"/>
+          <mat-icon matSuffix class="fa fa-envelope"></mat-icon>
+
+          <mat-error *ngIf="emailForm.get('email').invalid">{{getErrorMessage('email')}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" fxFlex="45" [color]="'accent'">
+          <mat-label>Confirmation</mat-label>
+          <input matInput [formControlName]="'email_confirmation'" type="email"/>
+          <mat-icon matSuffix class="fa fa-envelope"></mat-icon>
+          <mat-hint>Please type your email again to confirm it's correct</mat-hint>
+
+          <mat-error *ngIf="emailForm.get('email_confirmation').invalid">{{getErrorMessage('email_confirmation')}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="100" fxLayout="row" style="padding: 1em 0;" *ngIf="errors.emailForm">
+        <app-error-list [httpError]="errors.emailForm">
+
+        </app-error-list>
+      </div>
+
+      <div fxFlex="100" fxLayout="row" style="padding: 1em 0;">
+        <button mat-raised-button color="accent" [type]="'submit'">Save</button>
+      </div>
+    </form>
   </mat-card>
 
   <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
     <mat-card-title>Password settings</mat-card-title>
+
+    <form fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start"
+          [formGroup]="passwordForm"
+          (ngSubmit)="updatePassword()">
+
+      <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <mat-form-field appearance="legacy" fxFlex="45" [color]="'accent'">
+          <mat-label>Password</mat-label>
+          <input matInput [formControlName]="'password'" type="password"/>
+          <mat-icon matSuffix class="fa fa-lock"></mat-icon>
+
+          <mat-error *ngIf="passwordForm.get('password').invalid">{{getErrorMessage('password')}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" fxFlex="45" [color]="'accent'">
+          <mat-label>Confirmation</mat-label>
+          <input matInput [formControlName]="'password_confirmation'" type="password"/>
+          <mat-icon matSuffix class="fa fa-lock"></mat-icon>
+          <mat-hint>Please type your password again to confirm it's correct</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="100" fxLayout="row" style="padding: 1em 0;" *ngIf="errors.passwordForm">
+        <app-error-list [httpError]="errors.passwordForm">
+
+        </app-error-list>
+      </div>
+
+      <div fxFlex="100" fxLayout="row" style="padding: 1em 0;">
+        <button mat-raised-button color="accent" [type]="'submit'">Save</button>
+      </div>
+    </form>
   </mat-card>
 
   <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
     <mat-card-title>Booking settings</mat-card-title>
+
+    <form fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start"
+          [formGroup]="bookingForm"
+          (ngSubmit)="updateBookingDetails()">
+
+      <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+
+      </div>
+
+      <div fxFlex="100" fxLayout="row" style="padding: 1em 0;" *ngIf="errors.bookingForm">
+        <app-error-list [httpError]="errors.bookingForm">
+
+        </app-error-list>
+      </div>
+
+      <div fxFlex="100" fxLayout="row" style="padding: 1em 0;">
+        <button mat-raised-button color="accent" [type]="'submit'">Save</button>
+      </div>
+
+    </form>
   </mat-card>
 
   <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
     <mat-card-title>Marketing settings</mat-card-title>
-  </mat-card>
 
+    <form fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start"
+          [formGroup]="marketingForm"
+          (ngSubmit)="updateMarketingDetails()">
+
+      <div fxFlex="100" fxLayout="column" style="padding: 1em 0;">
+        <mat-checkbox [formControlName]="'holiday_perm'">I'm Happy to receive Christmas cards</mat-checkbox>
+        <mat-checkbox [formControlName]="'promotion_perm'">I'm happy to receive promotional material</mat-checkbox>
+      </div>
+
+      <div fxFlex="100" fxLayout="row" style="padding: 1em 0;" *ngIf="errors.marketingForm">
+        <app-error-list [httpError]="errors.marketingForm">
+
+        </app-error-list>
+      </div>
+
+      <div fxFlex="100" fxLayout="row" style="padding: 1em 0;">
+        <button mat-raised-button color="accent" [type]="'submit'">Save</button>
+      </div>
+
+    </form>
+  </mat-card>
 </div>

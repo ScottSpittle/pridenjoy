@@ -40,10 +40,23 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe((user: User) => {
         this.user = user;
         this.navList.splice(this.navList.length - 1, 1, {
-          title: user.getFullName(),
+          title: user.first,
           route: 'account',
           icon: 'fa-user',
           active: true
+        });
+      });
+
+    this._authService.logoutEvent
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(() => {
+        this.user = null;
+
+        this.navList.splice(this.navList.length - 1, 1, {
+          title: 'Login',
+          route: 'auth/login',
+          icon: 'fa-sign-in',
+          active: false
         });
       });
 
