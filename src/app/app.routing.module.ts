@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: './accommodation/accommodation.module#AccommodationModule'
   },
   {
+    path: 'availability',
+    loadChildren: './availability/availability.module#AvailabilityModule'
+  },
+  {
     path: 'recommendation',
     loadChildren: './recommendation/recommendation.module#RecommendationModule'
   },

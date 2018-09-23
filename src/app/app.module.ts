@@ -19,6 +19,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {SimpleNotificationsModule} from 'angular2-notifications';
 import {TokenInterceptor} from './core/interceptors/token.interceptor';
 import {AuthGuard} from './core/guards/auth.guard';
+import {CalendarModule, DateAdapter} from 'angular-calendar';
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,10 @@ import {AuthGuard} from './core/guards/auth.guard';
     HttpClientModule,
     SimpleNotificationsModule.forRoot({
       showProgressBar: false
+    }),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
     })
   ],
   providers: [

@@ -26,7 +26,8 @@
               "src/theme.scss",
               "src/palette.scss",
               "src/styles.scss",
-              "node_modules/font-awesome/scss/font-awesome.scss"
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "node_modules/angular-calendar/css/angular-calendar.css"
             ],
             "scripts": []
           },

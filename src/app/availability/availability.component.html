@@ -1,0 +1,46 @@
+<div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="start center">
+  <h1 fxFlex="100">Availability</h1>
+
+  <mat-card fxFlex="100" fxLayout="row wrap">
+    <mat-card-title fxFlex="100">
+      <div fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex="100px"
+             class="btn btn-primary"
+             mwlCalendarPreviousView
+             [view]="view"
+             [(viewDate)]="viewDate"
+             (viewDateChange)="activeDayIsOpen = false">
+          <button mat-raised-button color="accent">Previous</button>
+        </div>
+        <div fxFlex="100px"
+             class="btn btn-outline-secondary"
+             mwlCalendarToday
+             [(viewDate)]="viewDate">
+          <button mat-raised-button color="accent">Today</button>
+        </div>
+        <div fxFlex="100px"
+             class="btn btn-primary"
+             mwlCalendarNextView
+             [view]="view"
+             [(viewDate)]="viewDate"
+             (viewDateChange)="activeDayIsOpen = false">
+          <button mat-raised-button color="accent">Next</button>
+        </div>
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+      </div>
+    </mat-card-title>
+    <mat-card-content fxFlex="100">
+      <div fxFlex="100">
+        <mwl-calendar-month-view
+          [viewDate]="viewDate"
+          [events]="events"
+          [refresh]="refresh"
+          [activeDayIsOpen]="activeDayIsOpen"
+          (dayClicked)="dayClicked($event.day)"
+          (eventClicked)="handleEvent('Clicked', $event.event)"
+          (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-month-view>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
