@@ -12,4 +12,7 @@ export class HelpComponent implements OnInit {
   ngOnInit() {
   }
 
+  public download(file: string) {
+    window.open(file, 'Download');
+  }
 }
