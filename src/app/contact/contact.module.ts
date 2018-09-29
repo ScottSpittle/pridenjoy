@@ -8,12 +8,14 @@ import {
   MatCardModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatProgressSpinnerModule,
   MatSelectModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from '@agm/core';
+import {SharedModule} from '../shared/shared.module';
+import {AgmDirectionModule} from 'agm-direction';
 
 @NgModule({
   imports: [
@@ -26,9 +28,12 @@ import {AgmCoreModule} from '@agm/core';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     FormsModule,
     AgmCoreModule,
-    ReactiveFormsModule
+    AgmDirectionModule,
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [ContactComponent]
 })

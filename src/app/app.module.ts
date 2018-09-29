@@ -21,6 +21,7 @@ import {TokenInterceptor} from './core/interceptors/token.interceptor';
 import {AuthGuard} from './core/guards/auth.guard';
 import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
     FlexLayoutModule,
     RouterModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBorXyjV7kGvWoYrZsautKm9cYzKe7s2OY',
+      apiKey: environment.keys.maps,
       libraries: ['geometry']
     }),
     HttpClientModule,

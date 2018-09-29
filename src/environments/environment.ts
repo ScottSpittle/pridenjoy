@@ -7,6 +7,9 @@ export const environment = {
   urls: {
     public_api: 'http://localhost:8000/public',
     api: 'http://localhost:8000/api'
+  },
+  keys: {
+    maps: 'AIzaSyBorXyjV7kGvWoYrZsautKm9cYzKe7s2OY',
   }
 };
 

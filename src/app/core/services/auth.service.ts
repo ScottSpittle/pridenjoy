@@ -6,6 +6,7 @@ import {BaseService} from './base.service';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {User} from '../models/User';
 import {isNullOrUndefined} from 'util';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,17 +17,21 @@ export class AuthService extends BaseService {
 
   private _loggedInUser: User;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router) {
     super();
 
     const token = localStorage.getItem('token');
 
-    if(!isNullOrUndefined(token)) {
+    if (!isNullOrUndefined(token)) {
       this.http.get(environment.urls.api + '/user')
         .subscribe((r) => {
           const user = new User(r);
 
           this.setLoggedInState(user);
+        }, () => {
+          localStorage.removeItem('token');
+          this.router.navigate(['/auth', 'login']);
         });
     }
   }

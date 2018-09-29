@@ -34,52 +34,64 @@
       </a>
     </div>
 
-    <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start">
+    <form fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start"
+          [formGroup]="contactForm"
+          #cform="ngForm"
+          (ngSubmit)="contact()">
       <div fxFlex="45" fxLayout="row wrap" fxLayoutAlign="space-between center">
         <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
           <mat-label>Name</mat-label>
-          <input matInput [formControl]="name" required/>
+          <input matInput [formControlName]="'name'" required/>
           <mat-icon matSuffix class="fa fa-user"></mat-icon>
           <mat-hint>Full name</mat-hint>
 
-          <mat-error *ngIf="name.invalid">{{getErrorMessage('name')}}</mat-error>
+          <mat-error *ngIf="contactForm.get('name').invalid">{{getErrorMessage('name')}}</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
           <mat-label>E-mail address</mat-label>
-          <input matInput [formControl]="email" required/>
+          <input matInput [formControlName]="'email'" required/>
           <mat-icon matSuffix class="fa fa-envelope"></mat-icon>
-          <mat-error *ngIf="email.invalid">{{getErrorMessage('email')}}</mat-error>
+          <mat-error *ngIf="contactForm.get('email').invalid">{{getErrorMessage('email')}}</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
           <mat-label>Telephone</mat-label>
-          <input matInput [formControl]="phone"/>
+          <input matInput [formControlName]="'phone'" required/>
           <mat-icon matSuffix class="fa fa-phone"></mat-icon>
           <mat-hint>Mobile or landline</mat-hint>
-          <mat-error *ngIf="phone.invalid">{{getErrorMessage('phone')}}</mat-error>
+          <mat-error *ngIf="contactForm.get('phone').invalid">{{getErrorMessage('phone')}}</mat-error>
         </mat-form-field>
       </div>
 
       <div fxFlex="45" fxLayout="row wrap">
         <mat-form-field fxFlex="100" [color]="'accent'">
-          <mat-select placeholder="Contact method">
-            <mat-option value="email">E-mail</mat-option>
-            <mat-option value="snailmail">Snail mail</mat-option>
-            <mat-option value="telephone">Telephone</mat-option>
+          <mat-select placeholder="Contact method" [formControlName]="'method'" required>
+            <mat-option value="EMAIL">E-mail</mat-option>
+            <mat-option value="SNAILMAIL">Snail mail</mat-option>
+            <mat-option value="TELEPHONE">Telephone</mat-option>
           </mat-select>
           <mat-hint>Preferred method of contact</mat-hint>
+          <mat-error *ngIf="contactForm.get('method').invalid">{{getErrorMessage('method')}}</mat-error>
         </mat-form-field>
 
         <mat-form-field fxFlex="100" [color]="'accent'">
-          <textarea matInput placeholder="Message" rows="4"></textarea>
+          <textarea matInput placeholder="Message" rows="4" [formControlName]="'message'" required></textarea>
+          <mat-error *ngIf="contactForm.get('message').invalid">{{getErrorMessage('message')}}</mat-error>
         </mat-form-field>
       </div>
 
-      <div fxFlex="100" style="padding-top: 1em;">
-        <button mat-raised-button color="accent">Send</button>
+      <div fxFlex="100" fxLayout="row" style="padding: 1em 0;" *ngIf="error">
+        <app-error-list [httpError]="error">
+
+        </app-error-list>
       </div>
-    </div>
+
+      <div fxFlex="100" style="padding-top: 1em;">
+        <button mat-raised-button color="accent" type="submit">
+          <span *ngIf="!loading.contact; else loader">Send</span></button>
+      </div>
+    </form>
   </mat-card>
 
   <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center" style="margin-top: 1em;">
@@ -87,8 +99,7 @@
     <mat-card-content fxFlex="100" fxLayout="row wrap">
       <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'" fxFlex="100">
         <mat-label>Post code</mat-label>
-        <input matInput/>
-        <mat-icon matSuffix class="fa fa-user"></mat-icon>
+        <input matInput [(ngModel)]="post_code"/>
         <mat-hint>Enter your post code or address</mat-hint>
       </mat-form-field>
 
@@ -98,12 +109,21 @@
                style="height: 250px; width: 100%; position: relative; padding: 1em 0;">
         <agm-marker [latitude]="map.center.latitude" [longitude]="map.center.longitude">
         </agm-marker>
+        <agm-direction *ngIf="gotDirections" [origin]="origin"
+                       [destination]="{ lat: map.center.latitude, lng: map.center.longitude}">
+        </agm-direction>
       </agm-map>
 
       <div fxLayout="row wrap" fxLayoutGap="10px">
-        <button mat-raised-button color="accent">Hide Markers</button>
-        <button mat-raised-button color="accent">Get Directions</button>
+        <button mat-raised-button color="accent" (click)="getDirections()" [disabled]="loading.directions">
+          <span *ngIf="!loading.directions; else loader">Get Directions</span>
+        </button>
       </div>
     </mat-card-content>
   </mat-card>
 </div>
+
+
+<ng-template #loader>
+  <mat-spinner [diameter]="25" style="margin: 10px auto;"></mat-spinner>
+</ng-template>
