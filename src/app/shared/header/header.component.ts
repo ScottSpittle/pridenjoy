@@ -1,34 +1,40 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {User} from '../../core/models/User';
 import {AuthService} from '../../core/services/auth.service';
-import {Subject} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
 import {isNullOrUndefined} from 'util';
 import {NavigationEnd, Router} from '@angular/router';
+import {BaseComponent} from '../../base.component';
+import {ObservableMedia} from '@angular/flex-layout';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy {
+  @Output()
+  menuClicked: EventEmitter<boolean> = new EventEmitter();
+
   public user: User;
 
-  public navList: Array<{ title: string, route: string, icon?: string, active: boolean }> = [
-    {title: 'Home', route: 'home', active: false},
-    {title: 'Accommodations', route: 'accommodation', active: false},
-    {title: 'Availability', route: 'availability', active: false},
-    {title: 'Recommendations', route: 'recommendation', active: false},
-    {title: 'Help', route: 'help', active: false},
-    {title: 'Contact Us', route: 'contact', active: false},
-    {title: 'Login', route: 'auth/login', icon: 'fa-sign-in', active: false},
+  public navList: Array<any> = [
+    {title: 'Home', route: 'home', icon: 'fa-home', active: false, padding: '0.5em 1.5em 0.5em 1em'},
+    {title: 'Accommodations', route: 'accommodation', icon: 'fa-hotel', active: false, icon_padding: '5px',
+      padding: '0.5em 1.5em 0.5em 0.5em'},
+    {title: 'Availability', route: 'availability', icon: 'fa-calendar', active: false, padding: '0.5em 1.5em 0.5em 1em'},
+    {title: 'Recommendations', route: 'recommendation', icon: 'fa-thumbs-up', active: false, padding: '0.5em 1.5em 0.5em 1em'},
+    {title: 'Contact Us', route: 'contact', icon: 'fa-envelope', active: false, padding: '0.5em 1.5em 0.5em 1em'}
   ];
 
-  private ngUnsubscribe: Subject<any> = new Subject();
+  public navListAuth: Array<any> = [
+    {title: 'Login', route: 'auth/login', icon: 'fa-sign-in', active: false, padding: '0.5em 1.3em 0.5em 1em'}
+  ];
 
   constructor(private _authService: AuthService,
-              private router: Router) {
-
+              private router: Router,
+              private media: ObservableMedia) {
+    super(media);
   }
 
   ngOnInit() {
@@ -39,11 +45,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
       )
       .subscribe((user: User) => {
         this.user = user;
-        this.navList.splice(this.navList.length - 1, 1, {
-          title: user.first,
+        this.navListAuth.splice(this.navListAuth.length - 1, 1, {
+          title: user.getFullName(),
           route: 'account',
           icon: 'fa-user',
-          active: true
+          active: true,
+          padding: '0.5em 1.3em 0.5em 1em'
         });
       });
 
@@ -52,11 +59,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.user = null;
 
-        this.navList.splice(this.navList.length - 1, 1, {
+        this.navListAuth.splice(this.navListAuth.length - 1, 1, {
           title: 'Login',
           route: 'auth/login',
           icon: 'fa-sign-in',
-          active: false
+          active: false,
+          padding: '0.5em 1.3em 0.5em 1em'
         });
       });
 
@@ -65,14 +73,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.ngUnsubscribe),
         filter(e => e instanceof NavigationEnd)
       )
-      .subscribe((e: any) => this.navList
-        .forEach(i => i.active = e.urlAfterRedirects.startsWith(`/${i.route}`))
+      .subscribe((e: any) => {
+          this.navList
+            .forEach(i => i.active = e.urlAfterRedirects.startsWith(`/${i.route}`));
+          this.navListAuth
+            .forEach(i => i.active = e.urlAfterRedirects.startsWith(`/${i.route}`));
+        }
       );
   }
 
   public ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
+    super.ngOnDestroy();
   }
 
 }

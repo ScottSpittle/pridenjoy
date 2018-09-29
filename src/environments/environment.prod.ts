@@ -5,6 +5,6 @@ export const environment = {
     api: 'http://api.pride-n-joy.co.uk/api'
   },
   keys: {
-    maps: 'AIzaSyATC8-JiFMnQawv43v_ZFUF1VskU7DT1Ew',
+    maps: 'AIzaSyBorXyjV7kGvWoYrZsautKm9cYzKe7s2OY',
   }
 };

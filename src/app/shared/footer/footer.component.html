@@ -1,12 +1,13 @@
 <mat-card fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center center">
-
   <div fxLayout="row wrap" fxFlex="80" fxLayoutAlign="center start">
-    <div fxFlex="20">
+    <div fxFlex="20" fxFlex.lt-lg="50" fxFlex.lt-sm="100"
+         [fxFlexOrder]="isDesktop ? 1 : 2" fxLayoutAlign="center center" fxLayout="column">
+
       <h4>Accepted Payments</h4>
       <img src="https://pride-n-joy.co.uk/images/paymenticons.png"/>
     </div>
 
-    <div fxFlex="30" style="text-align: center;">
+    <div fxFlex="30" fxFlex.lt-lg="100" style="text-align: center;" [fxFlexOrder]="isDesktop ? 2 : 1">
       <p>Pride-N-Joy</p>
       <p>24, Trinity Road, Bridlington, East Yorkshire. YO15 2EY</p>
       <p>
@@ -29,7 +30,8 @@
       </p>
     </div>
 
-    <div fxFlex="25">
+    <div fxFlex="25" fxFlexOrder="3" fxFlex.lt-lg="50" fxFlex.lt-sm="100"
+         fxLayoutAlign="center center" fxLayout="column">
       <h4>Awards for Pride N Joy</h4>
       <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="10px">
         <img src="https://pride-n-joy.co.uk/images/Small1.jpg" class="footer-image-awards"/>
@@ -37,6 +39,7 @@
         <img src="https://pride-n-joy.co.uk/images/Small3.jpg" class="footer-image-awards"/>
       </div>
     </div>
+
   </div>
 
 </mat-card>

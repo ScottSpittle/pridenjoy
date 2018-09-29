@@ -1,24 +1,54 @@
-<div fxLayout="row wrap" fxLayoutAlign="center start" fxFlex="100">
+<mat-sidenav-container fxFlexFill>
   <simple-notifications></simple-notifications>
 
-  <app-header fxFlex="100"></app-header>
+  <mat-sidenav #sidenav [(opened)]="sideNavOpenState" (backdropClick)="sideNavOpenState = false"
+               fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="50">
+    <div class="sidenav-header" fxLayout="row" fxFlex="100">
+      <mat-toolbar color="primary" fxFlex="100">
+        <mat-toolbar-row fxLayout="row wrap" fxLayoutAlign="center center">
+          <span class="nav-brand">Pride-N-Joy</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
 
-  <div fxFlex="80" fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="10px">
+    <div class="sidenav-content" fxLayout="row wrap" fxFlex="100" fxLayoutAlign="start start">
+      <div mat-ripple
+           *ngFor="let item of navList"
+           class="nav-item"
+           [routerLink]="[item.route]"
+           [class.active]="item.active"
+           style="padding: 0.5em;"
+           (click)="sidenav.close()"
+           fxFlex="100">
+          <span class="nav-title" fxFlex="0 1 auto" [title]="item.title">
+            <mat-icon [ngClass]="['fa', item.icon]" *ngIf="item.icon"
+                      [style.padding-right]="item.icon_padding && isDesktop ? item.icon_padding : 'none'"></mat-icon>
+            <span>{{item.title}}</span>
+          </span>
+      </div>
+    </div>
+  </mat-sidenav>
 
-    <div fxFlex="20" fxLayout="row wrap" *ngIf="showEvents">
-      <h1 fxFlex="100"> Events </h1>
+  <mat-sidenav-content fxFlexFill>
+    <div fxLayout="row wrap" fxLayoutAlign="center start" fxFlex="100">
 
-      <div fxFlex="100" fxLayout="row wrap">
-        <mat-accordion fxFlex="100">
-          <mat-expansion-panel *ngFor="let event of eventList; let i = index" [expanded]="i === 0" class="app-event-item">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{event.title}}
-              </mat-panel-title>
-            </mat-expansion-panel-header>
+      <app-header fxFlex="100" (menuClicked)="toggleSideNav()"></app-header>
 
-            <mat-list>
-              <mat-list-item *ngFor="let element of event.table_data">
+      <div fxFlex="80" fxLayout="row" fxLayout.lt-md="row wrap" fxFlex.lt-lg="95" fxLayoutAlign="space-around start">
+
+        <div fxFlex="20" fxFlex.lt-md="100" fxLayout="row wrap" [style.margin-right]="isMobile ? 0 : '10px'"
+             [fxFlexOrder]="isMobile ? 2 : 1" *ngIf="showEvents">
+          <h1 fxFlex="100"> Events </h1>
+
+          <div fxFlex="100" fxLayout="row wrap">
+            <mat-accordion fxFlex="100">
+              <mat-expansion-panel *ngFor="let event of eventList; let i = index" [expanded]="i === 0" class="app-event-item">
+                <mat-expansion-panel-header>
+                  <span class="trunc" [title]="event.title">{{event.title}}</span>
+                </mat-expansion-panel-header>
+
+                <mat-list>
+                  <mat-list-item *ngFor="let element of event.table_data">
                 <span class="trunc">
                   <mat-icon [ngClass]="['fa', element.icon]"></mat-icon>
                   <span *ngIf="element.icon !== 'fa-link'; else link">{{element.text}}</span>
@@ -27,19 +57,21 @@
                     <a [href]="element.text">{{element.text}}</a>
                   </ng-template>
                 </span>
-              </mat-list-item>
-            </mat-list>
-          </mat-expansion-panel>
-        </mat-accordion>
+                  </mat-list-item>
+                </mat-list>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+
+        <div [fxFlex]="showEvents ? 80 : 100" fxFlex.lt-md="100" [fxFlexOrder]="isMobile ? 1 : 2">
+          <router-outlet></router-outlet>
+        </div>
+
       </div>
+
+      <app-footer fxFlex="100"></app-footer>
+
     </div>
-
-    <div [fxFlex]="showEvents ? 80 : 100">
-      <router-outlet></router-outlet>
-    </div>
-
-  </div>
-
-  <app-footer fxFlex="100"></app-footer>
-
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

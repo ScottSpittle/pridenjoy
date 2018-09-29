@@ -141,4 +141,8 @@ export class ContactComponent implements OnInit {
         window.dispatchEvent(new Event('resize'));
       });
   }
+
+  public download(file: string) {
+    window.open(file, 'Download');
+  }
 }

@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
@@ -9,8 +9,8 @@ import {
   MatExpansionModule,
   MatIconModule,
   MatIconRegistry,
-  MatListModule,
-  MatTabsModule
+  MatListModule, MatSidenavModule,
+  MatTabsModule, MatToolbarModule
 } from '@angular/material';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app.routing.module';
@@ -22,12 +22,25 @@ import {AuthGuard} from './core/guards/auth.guard';
 import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import {environment} from '../environments/environment';
+import {CommonModule} from '@angular/common';
+
+declare var Hammer: any;
+
+export class MyHammerConfig extends HammerGestureConfig {
+  buildHammer(element: HTMLElement) {
+    const mc = new Hammer(element, {
+      touchAction: 'pan-y',
+    });
+    return mc;
+  }
+}
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -36,6 +49,8 @@ import {environment} from '../environments/environment';
     MatExpansionModule,
     MatListModule,
     MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
     FlexLayoutModule,
     RouterModule,
     AgmCoreModule.forRoot({
@@ -58,6 +73,7 @@ import {environment} from '../environments/environment';
       useClass: TokenInterceptor,
       multi: true
     },
+    {provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig},
     AuthGuard
   ],
   bootstrap: [AppComponent]

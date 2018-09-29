@@ -1,24 +1,57 @@
 <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center center">
-  <mat-toolbar color="primary" fxFlex="100" fxLayout="row wrap" id="header-toolbar" fxLayoutAlign="center center">
+  <mat-toolbar color="primary" fxFlex="100" fxLayout="row wrap" id="header-toolbar" fxLayoutAlign="center center" fxFlexFill>
 
-    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center" fxFlex="80">
-      <img src="https://pride-n-joy.co.uk/images/Pride-n-Joy.jpg" id="header-img-main"/>
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center"
+                     fxLayoutAlign.lt-md="start center"
+                     fxFlex="80" fxFlex.lt-lg="95" fxFlexFill>
+      <div fxFlex="2em" fxLayout="row" fxLayoutAlign="start center" fxHide.gt-sm>
+        <mat-icon class="fa fa-bars" (click)="menuClicked.next(true)"></mat-icon>
+      </div>
 
-      <div fxFlex fxLayout="row wrap" fxLayoutAlign="end center">
-        <mat-icon class="fa fa-bars" fxHide.gt-xs></mat-icon>
+      <img src="https://pride-n-joy.co.uk/images/Pride-n-Joy.jpg" id="header-img-main"
+      fxFlexAlign.lt-md="center"/>
 
-        <div mat-ripple *ngFor="let item of navList"
-             fxHide.xs
-             [routerLink]="[item.route]"
-             fxFlex="0 1 auto"
-             class="nav-item"
-             [class.active]="item.active"
-             fxLayout="row"
-             fxLayoutAlign="center center">
-          <span class="nav-title" fxFlex="0 1 auto">
-            <mat-icon [ngClass]="['fa', item.icon]" *ngIf="item.icon"></mat-icon>
-            {{item.title}}
+      <div fxFlex fxLayout="row wrap" fxLayoutAlign="start space-between" fxFlexFill fxHide.lt-md>
+        <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="end center">
+          <div mat-ripple *ngFor="let item of navListAuth"
+               fxHide.xs
+               [routerLink]="[item.route]"
+               fxFlex="0 1 auto"
+               class="nav-item"
+               [class.active]="item.active"
+               fxLayout="row"
+               [style.padding]="!isDesktop ? item.padding : '0.5em 1em'"
+               fxLayoutAlign="center center">
+          <span class="nav-title" fxFlex="0 1 auto"
+                [title]="item.title"
+                [class.fa-2x]="!isDesktop">
+            <mat-icon [ngClass]="['fa', item.icon]"
+                      *ngIf="item.icon"
+                      [style.padding-right]="item.icon_padding && isDesktop ? item.icon_padding : 'none'"></mat-icon>
+            <span fxHide.lt-lg>{{item.title}}</span>
           </span>
+          </div>
+        </div>
+
+        <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="end center">
+          <div mat-ripple *ngFor="let item of navList"
+               fxHide.xs
+               [routerLink]="[item.route]"
+               fxFlex="0 1 auto"
+               class="nav-item"
+               [class.active]="item.active"
+               fxLayout="row"
+               [style.padding]="!isDesktop ? item.padding : '0.5em 1em'"
+               fxLayoutAlign="center center">
+          <span class="nav-title" fxFlex="0 1 auto"
+                [title]="item.title"
+                [class.fa-2x]="!isDesktop">
+            <mat-icon [ngClass]="['fa', item.icon]"
+                      *ngIf="item.icon"
+                      [style.padding-right]="item.icon_padding && isDesktop ? item.icon_padding : 'none'"></mat-icon>
+            <span fxHide.lt-lg>{{item.title}}</span>
+          </span>
+          </div>
         </div>
       </div>
     </mat-toolbar-row>
