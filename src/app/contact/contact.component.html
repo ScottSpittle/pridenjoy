@@ -2,7 +2,7 @@
   <h1 fxFlex="100">Get in touch</h1>
 
   <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
-    <div fxFlex="50">
+    <div fxFlex="50" fxFlex.lt-md="100">
       <p>Please feel free to contact us using any of the methods shown below:</p>
       <p>
         <mat-icon class="fa fa-globe"></mat-icon>
@@ -22,7 +22,7 @@
       </p>
     </div>
 
-    <div fxFlex="50" fxLayout="row" fxLayoutAlign="space-around center">
+    <div fxFlex="50" fxFlex.lt-md="100" fxLayout="row" fxLayoutAlign="space-around center">
       <a href="https://www.facebook.com/pridenjoybridlington">
         <mat-icon class="fa fa-4x fa-facebook-f"></mat-icon>
       </a>
@@ -38,7 +38,7 @@
           [formGroup]="contactForm"
           #cform="ngForm"
           (ngSubmit)="contact()">
-      <div fxFlex="45" fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxFlex="45" fxFlex.lt-sm="100" fxLayout="row wrap" fxLayoutAlign="space-between center">
         <mat-form-field appearance="legacy" fxFlex="100" [color]="'accent'">
           <mat-label>Name</mat-label>
           <input matInput [formControlName]="'name'" required/>
@@ -64,7 +64,7 @@
         </mat-form-field>
       </div>
 
-      <div fxFlex="45" fxLayout="row wrap">
+      <div fxFlex="45" fxFlex.lt-sm="100" fxLayout="row wrap">
         <mat-form-field fxFlex="100" [color]="'accent'">
           <mat-select placeholder="Contact method" [formControlName]="'method'" required>
             <mat-option value="EMAIL">E-mail</mat-option>
@@ -125,7 +125,7 @@
   <mat-card fxFlex="100" fxLayout="row wrap" style="margin-top: 1em;">
     <mat-card-title fxFlex="100">Help</mat-card-title>
     <mat-card-content fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start">
-      <mat-card fxFlex="32">
+      <mat-card fxFlex="49" fxFlex.lt-md="100">
         <mat-card-header>
           <mat-card-title>
             <mat-icon class="fa fa-info"></mat-icon>
@@ -142,7 +142,7 @@
         </mat-card-actions>
       </mat-card>
 
-      <mat-card fxFlex="32">
+      <mat-card fxFlex="49" fxFlex.lt-md="100">
         <mat-card-header>
           <mat-card-title>
             <mat-icon class="fa fa-info"></mat-icon>
@@ -159,7 +159,7 @@
         </mat-card-actions>
       </mat-card>
 
-      <mat-card fxFlex="32">
+      <mat-card fxFlex="49" fxFlex.lt-md="100" style="margin-top: 1em;">
         <mat-card-header>
           <mat-card-title>
             <mat-icon class="fa fa-info"></mat-icon>

@@ -49,7 +49,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
           title: user.getFullName(),
           route: 'account',
           icon: 'fa-user',
-          active: true,
+          active: false,
           padding: '0.5em 1.3em 0.5em 1em'
         });
       });

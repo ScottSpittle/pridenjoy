@@ -11,7 +11,7 @@ import {NotificationsService} from 'angular2-notifications';
   templateUrl: './account-details.component.html',
   styleUrls: ['./account-details.component.scss']
 })
-export class AccountDetailsComponent implements OnInit {
+export class AccountDetailsComponent {
   public marketingForm: FormGroup;
   public bookingForm: FormGroup;
   public passwordForm: FormGroup;
@@ -61,10 +61,6 @@ export class AccountDetailsComponent implements OnInit {
     this.bookingForm = this.fb.group({});
   }
 
-  ngOnInit() {
-
-  }
-
   public updateDetails() {
     this.errors.personalForm = null;
 
@@ -98,31 +94,67 @@ export class AccountDetailsComponent implements OnInit {
 
     this._userService.updateEmail({
       email: this.emailForm.get('email').value,
-      email_confirmed: this.emailForm.get('email_confirmation').value
+      email_confirmation: this.emailForm.get('email_confirmation').value
     })
       .subscribe((user: User) => {
         this._authService.loggedInUser = user;
 
         this.notificationService
-          .success('Success!', 'New details have now been saved', {
+          .success('Success!', 'New email address has been saved', {
             timeOut: 2000
           });
       }, (err: HttpError) => {
         this.errors.emailForm = err;
 
         this.notificationService
-          .error('Update failed!', 'Unable to save your new details', {
+          .error('Update failed!', 'Unable to save your new email address', {
             timeOut: 2000
           });
       });
   }
 
   public updatePassword() {
+    this.errors.passwordForm = null;
 
+    this._userService.updatePassword({
+      password: this.passwordForm.get('password').value,
+      password_confirmation: this.passwordForm.get('password_confirmation').value
+    })
+      .subscribe(() => {
+        this.notificationService
+          .success('Success!', 'New password has been saved', {
+            timeOut: 2000
+          });
+      }, (err: HttpError) => {
+        this.errors.passwordForm = err;
+
+        this.notificationService
+          .error('Update failed!', 'Unable to save your new password', {
+            timeOut: 2000
+          });
+      });
   }
 
   public updateMarketingDetails() {
+    this.errors.marketingForm = null;
 
+    this._userService.updateMarketing({
+      xmasCardOK: this.marketingForm.get('holiday_perm').value,
+      promoMaterial: this.marketingForm.get('promotion_perm').value
+    })
+      .subscribe(() => {
+        this.notificationService
+          .success('Success!', 'New preferences have been saved', {
+            timeOut: 2000
+          });
+      }, (err: HttpError) => {
+        this.errors.marketingForm = err;
+
+        this.notificationService
+          .error('Update failed!', 'Unable to save your new preferences', {
+            timeOut: 2000
+          });
+      });
   }
 
   public updateBookingDetails() {

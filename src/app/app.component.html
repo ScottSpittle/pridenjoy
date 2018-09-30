@@ -1,8 +1,6 @@
 <mat-sidenav-container fxFlexFill>
-  <simple-notifications></simple-notifications>
-
   <mat-sidenav #sidenav [(opened)]="sideNavOpenState" (backdropClick)="sideNavOpenState = false"
-               fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="50">
+               fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="60">
     <div class="sidenav-header" fxLayout="row" fxFlex="100">
       <mat-toolbar color="primary" fxFlex="100">
         <mat-toolbar-row fxLayout="row wrap" fxLayoutAlign="center center">
@@ -30,6 +28,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content fxFlexFill>
+    <simple-notifications></simple-notifications>
     <div fxLayout="row wrap" fxLayoutAlign="center start" fxFlex="100">
 
       <app-header fxFlex="100" (menuClicked)="toggleSideNav()"></app-header>

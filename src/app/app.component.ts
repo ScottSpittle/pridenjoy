@@ -40,9 +40,10 @@ export class AppComponent extends BaseComponent implements OnInit, OnDestroy {
     super(media);
     matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
 
-    const hammertime = new Hammer(elementRef.nativeElement, {});
+    const hammertime = new Hammer(elementRef.nativeElement, { velocity: 0.3, threshold: 900 });
     hammertime.on('panright', (ev) => {
-      if (this.isMobile) {
+      if (this.isMobile && ev.overallVelocity > 0) {
+        console.log(ev.overallVelocity, ev.distance);
         this.sidenav.open();
       }
     });

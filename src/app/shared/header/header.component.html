@@ -1,15 +1,23 @@
 <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center center">
-  <mat-toolbar color="primary" fxFlex="100" fxLayout="row wrap" id="header-toolbar" fxLayoutAlign="center center" fxFlexFill>
+  <mat-toolbar color="primary" fxFlex="100" fxLayout="row wrap" id="header-toolbar" fxLayoutAlign="center center"
+               fxFlexFill>
 
     <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center"
                      fxLayoutAlign.lt-md="start center"
                      fxFlex="80" fxFlex.lt-lg="95" fxFlexFill>
-      <div fxFlex="2em" fxLayout="row" fxLayoutAlign="start center" fxHide.gt-sm>
-        <mat-icon class="fa fa-bars" (click)="menuClicked.next(true)"></mat-icon>
-      </div>
+      <mat-icon fxHide.gt-sm class="fa fa-2x fa-bars" (click)="menuClicked.next(true)"
+                style="
+                position: absolute;
+                top: 8px;
+                display: block;
+                left: 15px;"></mat-icon>
 
       <img src="https://pride-n-joy.co.uk/images/Pride-n-Joy.jpg" id="header-img-main"
-      fxFlexAlign.lt-md="center"/>
+           fxFlexAlign.lt-md="center" fxHide.xs/>
+
+      <div fxFlex="calc(100%-2em)" fxHide.gt-xs fxFlexAlign="center">
+        <h1>Pride-n-Joy</h1>
+      </div>
 
       <div fxFlex fxLayout="row wrap" fxLayoutAlign="start space-between" fxFlexFill fxHide.lt-md>
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="end center">

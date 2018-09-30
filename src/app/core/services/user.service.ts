@@ -26,4 +26,14 @@ export class UserService extends BaseService {
       .pipe(map( r => new User(r)),
         catchError(this.handleErrorObservable));
   }
+
+  public updatePassword(data: any): Observable<any> {
+    return this.http.put(environment.urls.api + '/user/password', data)
+      .pipe(catchError(this.handleErrorObservable));
+  }
+
+  public updateMarketing(data: any): Observable<any> {
+    return this.http.put(environment.urls.api + '/user/marketing', data)
+      .pipe(catchError(this.handleErrorObservable));
+  }
 }
